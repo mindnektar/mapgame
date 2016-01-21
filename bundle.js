@@ -248,7 +248,7 @@ exports.default = React.createClass({
             React.createElement(
                 'span',
                 { className: 'step-num' },
-                'Step ',
+                'Step ',
                 this.props.stepNum,
                 ':'
             ),
@@ -337,7 +337,7 @@ exports.default = {
     }, {
         text: "Find Sydney Airport by the Botany Bay."
     }, {
-        text: "Find the point where Airport Drive crosses the North Pond.",
+        text: "Find the point where Airport Drive <em>crosses</em> the North Pond.",
         answer: {
             type: 'latLng',
             value: {
@@ -355,7 +355,7 @@ exports.default = {
             }
         }
     }, {
-        text: "Get up onto the bridge, follow the road northwest and stop at the axe-throwing venue.",
+        text: "Get up onto the bridge, follow the road northwest and stop at the <em>axe-throwing venue</em>.",
         answer: {
             type: 'latLng',
             value: {
@@ -364,7 +364,7 @@ exports.default = {
             }
         }
     }, {
-        text: "Go into the alley and keep straight on until you come back out on the road, then head southeast until you see a building with this shape on the left-hand side:",
+        text: "Go into the alley and keep straight on until you come back out on the road, then head southeast until you see a <em>building with this shape</em> on your left:",
         image: '01-01',
         answer: {
             type: 'latLng',
@@ -374,7 +374,7 @@ exports.default = {
             }
         }
     }, {
-        text: "From here, fly across the map directly eastward and keep going until there's a church right below you.",
+        text: "From here, fly across the map directly eastward and keep going until there's a <em>church</em> right below you.",
         answer: {
             type: 'latLng',
             value: {
@@ -383,7 +383,7 @@ exports.default = {
             }
         }
     }, {
-        text: "Walk across the street to the McDonald's.",
+        text: "Walk across the street to the <em>McDonald's</em>.",
         answer: {
             type: 'latLng',
             value: {
@@ -398,7 +398,7 @@ exports.default = {
             value: 'ibis'
         }
     }, {
-        text: "Get onto the highway and follow it northeast until you can see the railway station on your left.",
+        text: "Get onto the highway and follow it northeast until you can see the <em>railway station</em> on your left.",
         answer: {
             type: 'latLng',
             value: {
@@ -407,7 +407,7 @@ exports.default = {
             }
         }
     }, {
-        text: "Board the train going northeast and get off at the second stop. Head over to the police station on your right.",
+        text: "Board the train going northeast and get off at the second stop. Head over to the <em>police station</em> on your right.",
         answer: {
             type: 'latLng',
             value: {
@@ -416,7 +416,7 @@ exports.default = {
             }
         }
     }, {
-        text: "Passing the south side of the police station is the street that the railway station you just got off from is named after. Follow it east until you can go no further, then head left and keep going that way until you come across a checkerboard pattern on the road.",
+        text: "Passing the south side of the police station is a street sharing the name of the railway station you just got off from. Follow it east until you can go no further, then head left and keep going that way until you come across a <em>checkerboard pattern</em> on the road.",
         answer: {
             type: 'latLng',
             value: {
