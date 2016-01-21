@@ -16,7 +16,7 @@ const isAnswerValid = (answer, state) => {
 
         case 'latLng':
             const marker = state.map.markers[state.current.step];
-            const tolerance = answer.tolerance || .0002;
+            const tolerance = answer.value.tolerance || .0002;
 
             if (!marker) {
                 return false;

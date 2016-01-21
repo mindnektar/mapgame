@@ -248,7 +248,7 @@ exports.default = React.createClass({
             React.createElement(
                 'span',
                 { className: 'step-num' },
-                'Step ',
+                'Step ',
                 this.props.stepNum,
                 ':'
             ),
@@ -430,6 +430,16 @@ exports.default = {
             type: 'string',
             value: 'surry'
         }
+    }, {
+        text: "Passing the mall, there's a street named after a city in Ohio. Follow it east and stop by the four <em>tennis courts</em>.",
+        answer: {
+            type: 'latLng',
+            value: {
+                lat: -33.89238023257195,
+                lng: 151.218523979187,
+                tolerance: .00035
+            }
+        }
     }]
 };
 
@@ -465,7 +475,7 @@ var isAnswerValid = function isAnswerValid(answer, state) {
 
         case 'latLng':
             var marker = state.map.markers[state.current.step];
-            var tolerance = answer.tolerance || .0002;
+            var tolerance = answer.value.tolerance || .0002;
 
             if (!marker) {
                 return false;

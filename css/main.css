@@ -29,8 +29,9 @@ body {
 }
 
 #progress-bar div {
-    background: #a3d7a4;
+    background: linear-gradient(#a3d7a4, #8ac58b);
     height: 100%;
+    transition: width 200ms ease;
 }
 
 #progress-text {

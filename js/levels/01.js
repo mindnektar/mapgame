@@ -110,6 +110,17 @@ export default {
                 type: 'string',
                 value: 'surry'
             }
+        },
+        {
+            text: "Passing the mall, there's a street named after a city in Ohio. Follow it east and stop by the four <em>tennis courts</em>.",
+            answer: {
+                type: 'latLng',
+                value: {
+                    lat: -33.89238023257195,
+                    lng: 151.218523979187,
+                    tolerance: .0004
+                }
+            }
         }
     ]
 };
