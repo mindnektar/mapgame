@@ -64,18 +64,23 @@ body {
 }
 
 #steps li {
-    display: none;
+    height: 0;
     line-height: 1.4em;
-    margin: 0 10px 10px 0;
-    opacity: .4;
+    margin-right: 10px;
+    opacity: 0;
+    overflow: hidden;
 }
 
 #steps li.visible {
     display: list-item;
+    height: auto;
+    margin-bottom: 10px;
+    opacity: .4;
 }
 
 #steps li.current {
     opacity: 1;
+    transition: opacity 800ms ease;
 }
 
 #steps li .text em {
