@@ -142,11 +142,51 @@ exports.default = React.createClass({
 });
 
 },{}],5:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = React.createClass({
+    displayName: "Progress",
+    render: function render() {
+        return React.createElement(
+            "div",
+            {
+                id: "progress",
+                onClick: function onClick() {
+                    window.store.dispatch({
+                        type: 'NEXT_STEP'
+                    });
+                }
+            },
+            React.createElement(
+                "div",
+                { id: "progress-bar" },
+                React.createElement("div", { style: { width: this.getWidth() } })
+            ),
+            React.createElement(
+                "span",
+                { id: "progress-text" },
+                this.props.currentStep + 1 + '/' + this.props.stepCount
+            )
+        );
+    },
+    getWidth: function getWidth() {
+        return (this.props.currentStep + 1) / this.props.stepCount * 100 + '%';
+    }
+});
+
+},{}],6:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+
+var _Progress = require('./Progress');
+
+var _Progress2 = _interopRequireDefault(_Progress);
 
 var _Steps = require('./Steps');
 
@@ -155,10 +195,6 @@ var _Steps2 = _interopRequireDefault(_Steps);
 var _NextStep = require('./NextStep');
 
 var _NextStep2 = _interopRequireDefault(_NextStep);
-
-var _Skip = require('./Skip');
-
-var _Skip2 = _interopRequireDefault(_Skip);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -170,6 +206,10 @@ exports.default = React.createClass({
         return React.createElement(
             'div',
             { id: 'sidebar' },
+            React.createElement(_Progress2.default, {
+                stepCount: steps.length,
+                currentStep: this.props.current.step
+            }),
             React.createElement(_Steps2.default, {
                 steps: steps,
                 currentStep: this.props.current.step,
@@ -177,36 +217,12 @@ exports.default = React.createClass({
             }),
             React.createElement(_NextStep2.default, {
                 answerValid: this.props.answerValid
-            }),
-            React.createElement(_Skip2.default, null)
+            })
         );
     }
 });
 
-},{"./NextStep":4,"./Skip":6,"./Steps":8}],6:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.default = React.createClass({
-    displayName: 'Skip',
-    render: function render() {
-        return React.createElement(
-            'span',
-            {
-                onClick: function onClick() {
-                    window.store.dispatch({
-                        type: 'NEXT_STEP'
-                    });
-                }
-            },
-            'Skip'
-        );
-    }
-});
-
-},{}],7:[function(require,module,exports){
+},{"./NextStep":4,"./Progress":5,"./Steps":8}],7:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -485,7 +501,7 @@ var render = function render() {
 window.store.subscribe(render);
 render();
 
-},{"./components/Map":3,"./components/Sidebar":5,"./levels":9,"./reducers":12}],12:[function(require,module,exports){
+},{"./components/Map":3,"./components/Sidebar":6,"./levels":9,"./reducers":12}],12:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {

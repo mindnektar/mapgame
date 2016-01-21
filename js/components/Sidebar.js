@@ -1,6 +1,6 @@
+import Progress from './Progress';
 import Steps from './Steps';
 import NextStep from './NextStep';
-import Skip from './Skip';
 
 export default React.createClass({
     render() {
@@ -8,6 +8,10 @@ export default React.createClass({
 
         return (
             <div id="sidebar">
+                <Progress
+                    stepCount={steps.length}
+                    currentStep={this.props.current.step}
+                />
                 <Steps
                     steps={steps}
                     currentStep={this.props.current.step}
@@ -16,7 +20,6 @@ export default React.createClass({
                 <NextStep
                     answerValid={this.props.answerValid}
                 />
-                <Skip />
             </div>
         );
     }
