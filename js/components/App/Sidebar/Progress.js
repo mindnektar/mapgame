@@ -11,12 +11,17 @@ export default class App extends Component {
                     <div style={{width: this.getWidth()}}></div>
                 </div>
 
-                <span id="progress-text">{(this.props.currentStep + 1) + '/' + this.props.stepCount}</span>
+                <span id="progress-text">
+                {Math.min(this.props.currentStep + 1, this.props.stepCount) + '/' + this.props.stepCount}
+                </span>
             </div>
         );
     }
 
     getWidth() {
-        return ((this.props.currentStep + 1) / this.props.stepCount * 100) + '%';
+        return Math.min(
+            ((this.props.currentStep + 1) / this.props.stepCount * 100),
+            100
+        ) + '%';
     }
 }

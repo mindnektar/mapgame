@@ -21,10 +21,14 @@ export default class Sidebar extends Component {
                     nextStep={this.props.nextStep}
                     changeAnswer={this.props.changeAnswer}
                 />
-                <NextStep
-                    answerValid={this.props.answerValid}
-                    nextStep={this.props.nextStep}
-                />
+                {
+                    this.props.current.step < steps.length ?
+                        <NextStep
+                            answerValid={this.props.answerValid}
+                            nextStep={this.props.nextStep}
+                        /> :
+                        ''
+                }
             </div>
         );
     }

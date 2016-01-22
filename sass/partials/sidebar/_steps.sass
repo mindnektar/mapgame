@@ -4,7 +4,7 @@
     bottom: 60px
     left: $sidebar-padding
     list-style: none
-    margin: 0 10px 0 0
+    margin: 0
     overflow-y: auto
     max-height: calc(100% - 120px)
     padding: 0
@@ -21,6 +21,7 @@
     li
         height: 0
         line-height: 1.4em
+        margin-right: 10px
         opacity: 0
         overflow: hidden
 
@@ -29,6 +30,12 @@
             height: auto
             margin-bottom: 10px
             opacity: .4
+
+            &#win
+                color: $color-correct
+                font-size: 60px
+                opacity: 1
+                text-align: center
 
         &.current
             opacity: 1

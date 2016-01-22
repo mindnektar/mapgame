@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Step from './Steps/Step';
+import Win from './Steps/Win';
 
 export default class Steps extends Component {
     render() {
@@ -22,6 +23,10 @@ export default class Steps extends Component {
                         changeAnswer={this.props.changeAnswer}
                     />
                 )}
+
+                <Win
+                    visible={this.props.currentStep >= this.props.steps.length}
+                />
             </ul>
         );
     }

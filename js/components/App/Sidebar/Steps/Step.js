@@ -5,7 +5,7 @@ import Image from './Step/Image';
 export default class Step extends Component {
     render() {
         return (
-            <li className={(this.props.current ? ' current' : '') + (this.props.visible ? ' visible' : '')}>
+            <li className={(this.props.visible ? 'visible' : '') + (this.props.current ? ' current' : '')}>
                 <span className="step-num">
                     Step {this.props.stepNum}:
                 </span>

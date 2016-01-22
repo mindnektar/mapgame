@@ -16,14 +16,14 @@ class App extends Component {
                 <Map
                     markers={map.markers}
                     step={current.step}
-                    hasLatLngAnswer={step.answer && step.answer.type === 'latLng'}
-                    answerValid={App.isAnswerValid(step.answer, {current, map})}
+                    hasLatLngAnswer={step && step.answer && step.answer.type === 'latLng'}
+                    answerValid={step && App.isAnswerValid(step.answer, {current, map})}
                     setMarker={(step, lat, lng) => dispatch(actions.setMarker(step, lat, lng))}
                 />
                 <Sidebar
                     levels={levels}
                     current={current}
-                    answerValid={App.isAnswerValid(step.answer, {current, map})}
+                    answerValid={step && App.isAnswerValid(step.answer, {current, map})}
                     nextStep={() => dispatch(actions.nextStep())}
                     changeAnswer={answer => dispatch(actions.changeAnswer(answer))}
                 />
