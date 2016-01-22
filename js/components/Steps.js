@@ -18,6 +18,8 @@ export default React.createClass({
                         image={step.image}
                         hasStringAnswer={step.answer && step.answer.type === 'string'}
                         answerValid={this.props.answerValid}
+                        nextStep={this.props.nextStep}
+                        changeAnswer={this.props.changeAnswer}
                     />
                 )}
             </ul>

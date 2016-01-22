@@ -5,11 +5,7 @@ export default React.createClass({
         return (
             <div id="next-step">
                 <button
-                    onClick={() => {
-                        window.store.dispatch({
-                            type: 'NEXT_STEP'
-                        });
-                    }}
+                    onClick={() => this.props.nextStep()}
                     disabled={!this.props.answerValid ? 'disabled' : ''}
                 >
                     Next step

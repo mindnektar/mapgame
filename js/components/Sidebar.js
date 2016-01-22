@@ -12,14 +12,18 @@ export default React.createClass({
                 <Progress
                     stepCount={steps.length}
                     currentStep={this.props.current.step}
+                    nextStep={this.props.nextStep}
                 />
                 <Steps
                     steps={steps}
                     currentStep={this.props.current.step}
                     answerValid={this.props.answerValid}
+                    nextStep={this.props.nextStep}
+                    changeAnswer={this.props.changeAnswer}
                 />
                 <NextStep
                     answerValid={this.props.answerValid}
+                    nextStep={this.props.nextStep}
                 />
             </div>
         );

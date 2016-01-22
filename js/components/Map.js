@@ -43,12 +43,11 @@ export default React.createClass({
                 return;
             }
 
-            window.store.dispatch({
-                type: 'SET_MARKER',
-                step: this.props.step,
-                lat: event.latLng.lat(),
-                lng: event.latLng.lng()
-            });
+            this.props.setMarker(
+                this.props.step,
+                event.latLng.lat(),
+                event.latLng.lng()
+            );
         });
     }
 });

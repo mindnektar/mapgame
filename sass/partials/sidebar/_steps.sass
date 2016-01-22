@@ -47,15 +47,20 @@
         .answer
             position: relative
 
-            &.valid:after
-                color: $color-correct
-                content: "✔"
-                font-size: 30px
-                font-weight: bold
-                line-height: 0
-                position: absolute
-                right: 15%
-                top: 50%
+            &.valid
+                input
+                    background-color: $color-correct-secondary
+                    border-color: $color-correct
+
+                &:after
+                    color: $color-correct
+                    content: "✔"
+                    font-size: 30px
+                    font-weight: bold
+                    line-height: 0
+                    position: absolute
+                    right: 15%
+                    top: 50%
 
             input
                 border: 2px dotted #999
@@ -68,10 +73,6 @@
                 outline: none
                 text-align: center
                 width: 50%
-
-                .valid &
-                    background-color: $color-correct-secondary
-                    border-color: $color-correct
 
         .step-num
             font-weight: bold

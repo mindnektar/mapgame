@@ -7,17 +7,10 @@ export default React.createClass({
             <div className={'answer' + (this.props.answerValid ? ' valid' : '')}>
                 <input
                     ref={input => this.input = input}
-                    onChange={event => {
-                        window.store.dispatch({
-                            type: 'CHANGE_ANSWER',
-                            answer: event.target.value
-                        });
-                    }}
+                    onChange={event => this.props.changeAnswer(event.target.value)}
                     onKeyPress={event => {
                         if (event.which === 13 && this.props.answerValid) {
-                            window.store.dispatch({
-                                type: 'NEXT_STEP'
-                            });
+                            this.props.nextStep();
                         }
                     }}
                     disabled={this.props.disabled ? 'disabled' : ''}

@@ -27,6 +27,8 @@ export default React.createClass({
                             disabled={!this.props.current}
                             visible={this.props.visible}
                             answerValid={this.props.answerValid}
+                            nextStep={this.props.nextStep}
+                            changeAnswer={this.props.changeAnswer}
                         /> :
                         ''
                 }

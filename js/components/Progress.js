@@ -5,11 +5,7 @@ export default React.createClass({
         return (
             <div
                 id="progress"
-                onClick={() => {
-                    window.store.dispatch({
-                        type: 'NEXT_STEP'
-                    });
-                }}
+                onClick={() => this.props.nextStep()}
             >
                 <div id="progress-bar">
                     <div style={{width: this.getWidth()}}></div>
