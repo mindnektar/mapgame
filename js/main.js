@@ -6,6 +6,8 @@ import Sidebar from './components/Sidebar';
 import reducers from './reducers';
 import levels from './levels';
 
+require('../sass/main.sass');
+
 window.store = createStore(reducers);
 
 const isAnswerValid = (answer, state) => {
