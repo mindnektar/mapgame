@@ -1,8 +1,8 @@
-import React from 'react';
-import Answer from './Answer';
-import Image from './Image';
+import React, {Component} from 'react';
+import Answer from './Step/Answer';
+import Image from './Step/Image';
 
-export default React.createClass({
+export default class Step extends Component {
     render() {
         return (
             <li className={(this.props.current ? ' current' : '') + (this.props.visible ? ' visible' : '')}>
@@ -35,4 +35,4 @@ export default React.createClass({
             </li>
         );
     }
-});
+}

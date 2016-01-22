@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-export default React.createClass({
+export default class Map extends Component {
     render() {
         if (this.markers) {
             this.markers.forEach(marker => {
@@ -28,7 +28,7 @@ export default React.createClass({
         return (
             <div id="map"></div>
         );
-    },
+    }
 
     componentDidMount() {
         this.map = new google.maps.Map(document.getElementById('map'), {
@@ -50,4 +50,4 @@ export default React.createClass({
             );
         });
     }
-});
+}

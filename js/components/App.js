@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import * as actions from '../actions';
 import levels from '../levels';
-import Map from './Map';
-import Sidebar from './Sidebar';
+import Map from './App/Map';
+import Sidebar from './App/Sidebar';
 
-let App = React.createClass({
+class App extends Component {
     render() {
         const {dispatch, current, map} = this.props;
 
@@ -17,21 +17,21 @@ let App = React.createClass({
                     markers={map.markers}
                     step={current.step}
                     hasLatLngAnswer={step.answer && step.answer.type === 'latLng'}
-                    answerValid={this.isAnswerValid(step.answer, {current, map})}
+                    answerValid={App.isAnswerValid(step.answer, {current, map})}
                     setMarker={(step, lat, lng) => dispatch(actions.setMarker(step, lat, lng))}
                 />
                 <Sidebar
                     levels={levels}
                     current={current}
-                    answerValid={this.isAnswerValid(step.answer, {current, map})}
+                    answerValid={App.isAnswerValid(step.answer, {current, map})}
                     nextStep={() => dispatch(actions.nextStep())}
                     changeAnswer={answer => dispatch(actions.changeAnswer(answer))}
                 />
             </div>
         );
-    },
+    }
 
-    isAnswerValid(answer, data) {
+    static isAnswerValid(answer, data) {
         if (!answer) {
             return true;
         }
@@ -56,13 +56,13 @@ let App = React.createClass({
 
         return false;
     }
-});
+}
 
 const select = state => {
     return {
         current: state.current,
         map: state.map
-    }
+    };
 };
 
 export default connect(select)(App);

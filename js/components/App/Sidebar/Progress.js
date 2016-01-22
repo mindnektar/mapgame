@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-export default React.createClass({
+export default class App extends Component {
     render() {
         return (
             <div
@@ -14,9 +14,9 @@ export default React.createClass({
                 <span id="progress-text">{(this.props.currentStep + 1) + '/' + this.props.stepCount}</span>
             </div>
         );
-    },
+    }
 
     getWidth() {
         return ((this.props.currentStep + 1) / this.props.stepCount * 100) + '%';
     }
-});
+}

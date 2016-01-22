@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-export default React.createClass({
+export default class Image extends Component {
     render() {
         return (
             <img src={'img/' + this.props.source + '.png'} />
         );
     }
-});
+}

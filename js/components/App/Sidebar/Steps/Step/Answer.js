@@ -1,7 +1,6 @@
-import React from 'react';
-import NextStep from './NextStep';
+import React, {Component} from 'react';
 
-export default React.createClass({
+export default class Answer extends Component {
     render() {
         return (
             <div className={'answer' + (this.props.answerValid ? ' valid' : '')}>
@@ -17,11 +16,11 @@ export default React.createClass({
                 />
             </div>
         );
-    },
+    }
 
     componentDidUpdate() {
         if (this.props.visible) {
             this.input.focus();
         }
     }
-});
+}

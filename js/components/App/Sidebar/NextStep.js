@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-export default React.createClass({
+export default class NextStep extends Component {
     render() {
         return (
             <div id="next-step">
@@ -13,4 +13,4 @@ export default React.createClass({
             </div>
         );
     }
-});
+}

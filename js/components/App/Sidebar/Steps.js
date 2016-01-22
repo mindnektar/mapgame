@@ -1,7 +1,7 @@
-import React from 'react';
-import Step from './Step';
+import React, {Component} from 'react';
+import Step from './Steps/Step';
 
-export default React.createClass({
+export default class Steps extends Component {
     render() {
         return (
             <ul
@@ -24,9 +24,9 @@ export default React.createClass({
                 )}
             </ul>
         );
-    },
+    }
 
     componentDidUpdate() {
         this.ul.scrollTop = this.ul.scrollHeight;
     }
-});
+}

@@ -1,9 +1,9 @@
-import React from 'react';
-import Progress from './Progress';
-import Steps from './Steps';
-import NextStep from './NextStep';
+import React, {Component} from 'react';
+import Progress from './Sidebar/Progress';
+import Steps from './Sidebar/Steps';
+import NextStep from './Sidebar/NextStep';
 
-export default React.createClass({
+export default class Sidebar extends Component {
     render() {
         const steps = this.props.levels[this.props.current.level].steps;
 
@@ -28,4 +28,4 @@ export default React.createClass({
             </div>
         );
     }
-});
+}
