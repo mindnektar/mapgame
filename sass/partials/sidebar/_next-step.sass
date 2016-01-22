@@ -1,13 +1,18 @@
-#next-step
-    bottom: 20px
-    cursor: pointer
-    font-weight: bold
-    height: 30px
-    left: 20px
-    letter-spacing: 2px
-    position: absolute
-    text-transform: uppercase
-    width: 360px
+@import "../../helpers/globals"
 
-    &[disabled]
-        cursor: default
+#next-step
+    bottom: $sidebar-padding
+    left: $sidebar-padding
+    position: absolute
+    right: $sidebar-padding
+
+    button
+        cursor: pointer
+        font-weight: bold
+        height: 30px
+        letter-spacing: 2px
+        text-transform: uppercase
+        width: 100%
+
+        &[disabled]
+            cursor: default

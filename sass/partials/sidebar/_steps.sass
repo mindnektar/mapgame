@@ -1,12 +1,15 @@
+@import "../../helpers/globals"
+
 #steps
     bottom: 60px
+    left: $sidebar-padding
     list-style: none
-    margin: 0
+    margin: 0 10px 0 0
     overflow-y: auto
     max-height: calc(100% - 120px)
     padding: 0
     position: absolute
-    width: 360px
+    right: $sidebar-padding
 
     &::-webkit-scrollbar
         width: 8px
@@ -18,7 +21,6 @@
     li
         height: 0
         line-height: 1.4em
-        margin-right: 10px
         opacity: 0
         overflow: hidden
 
@@ -46,7 +48,7 @@
             position: relative
 
             &.valid:after
-                color: #65af67
+                color: $color-correct
                 content: "✔"
                 font-size: 30px
                 font-weight: bold
@@ -68,8 +70,8 @@
                 width: 50%
 
                 .valid &
-                    background-color: #d1f3d1
-                    border-color: #65af67
+                    background-color: $color-correct-secondary
+                    border-color: $color-correct
 
         .step-num
             font-weight: bold
