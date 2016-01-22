@@ -437,7 +437,7 @@ exports.default = {
             value: {
                 lat: -33.89238023257195,
                 lng: 151.218523979187,
-                tolerance: .00035
+                tolerance: .0004
             }
         }
     }]
@@ -456,13 +456,17 @@ var _Sidebar2 = _interopRequireDefault(_Sidebar);
 
 var _reducers = require('./reducers');
 
+var reducers = _interopRequireWildcard(_reducers);
+
 var _levels = require('./levels');
 
 var _levels2 = _interopRequireDefault(_levels);
 
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-window.store = Redux.createStore(Redux.combineReducers({ current: _reducers.current, map: _reducers.map }));
+window.store = Redux.createStore(Redux.combineReducers(reducers));
 
 var isAnswerValid = function isAnswerValid(answer, state) {
     if (!answer) {
