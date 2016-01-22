@@ -1,9 +1,12 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {createStore, combineReducers} from 'redux';
 import Map from './components/Map';
 import Sidebar from './components/Sidebar';
 import * as reducers from './reducers';
 import levels from './levels';
 
-window.store = Redux.createStore(Redux.combineReducers(reducers));
+window.store = createStore(combineReducers(reducers));
 
 const isAnswerValid = (answer, state) => {
     if (!answer) {

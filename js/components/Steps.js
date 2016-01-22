@@ -1,3 +1,4 @@
+import React from 'react';
 import Step from './Step';
 
 export default React.createClass({

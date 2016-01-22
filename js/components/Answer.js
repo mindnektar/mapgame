@@ -1,3 +1,4 @@
+import React from 'react';
 import NextStep from './NextStep';
 
 export default React.createClass({

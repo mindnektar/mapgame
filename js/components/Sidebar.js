@@ -1,3 +1,4 @@
+import React from 'react';
 import Progress from './Progress';
 import Steps from './Steps';
 import NextStep from './NextStep';
