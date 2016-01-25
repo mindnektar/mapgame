@@ -1,7 +1,8 @@
 const initialState = {
     answer: '',
     level: 0,
-    step: 0
+    step: 0,
+    view: 'map'
 };
 
 export default (state = initialState, action = '') => {

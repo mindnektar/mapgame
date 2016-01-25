@@ -26,7 +26,11 @@ export default class Map extends Component {
         });
 
         return (
-            <div id="map"></div>
+            <div
+                id="map"
+                className={this.props.visible ? 'visible' : ''}
+            >
+            </div>
         );
     }
 
