@@ -1,26 +1,52 @@
 #tabs
     bottom: 0
-    color: #ccc
     font-size: 10px
-    font-weight: bold
     left: 12px
     margin: 0
     padding: 0
     position: absolute
 
     li
-        border: 1px solid #ccc
+        background: linear-gradient(to bottom, #ececec 50%, #d1d1d1 100%)
+        border: 1px solid #aaa
         border-bottom: none
+        border-radius: 4px 4px 0 0
         cursor: pointer
         float: left
         list-style: none
-        margin-right: 12px
-        padding: 4px 12px
+        margin: 0 -5px
+        padding: 4px 24px
+        position: relative
+        text-shadow: 0 1px #fff
         transition: color 300ms ease
 
         &.active
-            background-color: #eee
-            color: #000
+            background: #fff
+            z-index: 1
 
-        &:hover
-            color: #000
+            &:before
+                box-shadow: 2px 2px 0 #fff
+
+            &:after
+                box-shadow: -2px 2px 0 #fff
+
+        &:before,
+        &:after
+            border: 1px solid #aaa
+            bottom: -1px
+            content: ""
+            height: 6px
+            position: absolute
+            width: 6px
+
+        &:before
+            border-bottom-right-radius: 4px
+            border-width: 0 1px 1px 0
+            box-shadow: 2px 2px 0 #d1d1d1
+            left: -7px
+
+        &:after
+            border-bottom-left-radius: 4px
+            border-width: 0 0 1px 1px
+            box-shadow: -2px 2px 0 #d1d1d1
+            right: -7px
