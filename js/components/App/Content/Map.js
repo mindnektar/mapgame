@@ -37,6 +37,9 @@ export default class Map extends Component {
     componentDidMount() {
         this.map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: 0, lng: 0},
+            mapTypeControlOptions: {
+                position: google.maps.ControlPosition.TOP_RIGHT
+            },
             zoom: 3
         });
 
