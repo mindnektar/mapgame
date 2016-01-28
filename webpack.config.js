@@ -19,7 +19,7 @@ module.exports = {
             },
             {
                 test: /\.sass$/,
-                loader: "style!css!sass?indentedSyntax"
+                loader: "style!css!sass?indentedSyntax&includePaths[]=sass/helpers"
             }
         ]
     },
