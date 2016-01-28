@@ -19,7 +19,11 @@ module.exports = {
             },
             {
                 test: /\.sass$/,
-                loader: "style!css!sass?indentedSyntax&includePaths[]=sass/helpers"
+                loader: "style!css!resolve-url-loader!sass?sourceMap&indentedSyntax&includePaths[]=sass/helpers"
+            },
+            {
+                test: /\.png$/,
+                loader: 'url-loader?limit=100000&includePaths[]=img'
             }
         ]
     },

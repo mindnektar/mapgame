@@ -7,6 +7,8 @@ export default class MapControls extends Component {
                 id="map-controls"
                 className={this.props.visible ? 'visible' : ''}
             >
+                <button className="line"></button>
+                <button className="marker"></button>
             </div>
         );
     }
