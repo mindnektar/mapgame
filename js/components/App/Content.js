@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Map from './Content/Map';
+import MapControls from './Content/MapControls';
 import Notes from './Content/Notes';
 
 export default class Content extends Component {
@@ -13,6 +14,9 @@ export default class Content extends Component {
                     hasLatLngAnswer={this.props.hasLatLngAnswer}
                     answerValid={this.props.answerValid}
                     setMarker={this.props.setMarker}
+                />
+                <MapControls
+                    visible={this.props.currentTab === 'map'}
                 />
                 <Notes
                     visible={this.props.currentTab === 'notes'}

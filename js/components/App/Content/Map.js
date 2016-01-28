@@ -40,7 +40,13 @@ export default class Map extends Component {
             mapTypeControlOptions: {
                 position: google.maps.ControlPosition.TOP_RIGHT
             },
-            zoom: 3
+            streetViewControlOptions: {
+                position: google.maps.ControlPosition.RIGHT_CENTER
+            },
+            zoom: 3,
+            zoomControlOptions: {
+                position: google.maps.ControlPosition.RIGHT_CENTER
+            }
         });
 
         this.map.addListener('click', event => {
