@@ -8,7 +8,7 @@ import Sidebar from './App/Sidebar';
 
 class App extends Component {
     render() {
-        const {dispatch, current, map, tab} = this.props;
+        const {dispatch, current, inventory, map, tab} = this.props;
 
         const step = levels[current.level].steps[current.step];
 
@@ -17,10 +17,13 @@ class App extends Component {
                 <Content
                     currentTab={tab.current}
                     markers={map.markers}
+                    inventoryItems={inventory.items}
+                    inventorySelected={inventory.selected}
                     step={current.step}
                     hasLatLngAnswer={step && step.answer && step.answer.type === 'latLng'}
                     answerValid={step && App.isAnswerValid(step.answer, {current, map})}
                     setMarker={(step, lat, lng) => dispatch(actions.setMarker(step, lat, lng))}
+                    inventorySelect={index => dispatch(actions.inventorySelect(index))}
                 />
                 <Sidebar
                     levels={levels}
@@ -67,6 +70,7 @@ class App extends Component {
 const select = state => {
     return {
         current: state.current,
+        inventory: state.inventory,
         map: state.map,
         tab: state.tab
     };

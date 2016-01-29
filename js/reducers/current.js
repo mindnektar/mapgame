@@ -1,6 +1,6 @@
 const initialState = {
     answer: '',
-    level: 0,
+    level: 1,
     step: 0,
     view: 'map'
 };

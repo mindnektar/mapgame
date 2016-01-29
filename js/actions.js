@@ -6,6 +6,10 @@ export function changeTab(tab) {
     return {type: 'CHANGE_TAB', tab};
 }
 
+export function inventorySelect(index) {
+    return {type: 'INVENTORY_SELECT', index};
+}
+
 export function nextStep() {
     return {type: 'NEXT_STEP'};
 }
