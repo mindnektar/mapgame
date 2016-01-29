@@ -1,5 +1,6 @@
 module.exports = {
     entry: [
+        'webpack/hot/dev-server',
         'webpack-dev-server/client?http://localhost:8080',
         './js/main.js'
     ],
@@ -12,10 +13,7 @@ module.exports = {
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loader: "babel-loader",
-                query: {
-                    presets: ['es2015', 'react']
-                }
+                loaders: ["react-hot-loader", "babel-loader"]
             },
             {
                 test: /\.sass$/,
