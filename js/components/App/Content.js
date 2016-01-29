@@ -17,6 +17,7 @@ export default class Content extends Component {
                 />
                 <MapControls
                     visible={this.props.currentTab === 'map'}
+                    hasLatLngAnswer={this.props.hasLatLngAnswer}
                 />
                 <Notes
                     visible={this.props.currentTab === 'notes'}

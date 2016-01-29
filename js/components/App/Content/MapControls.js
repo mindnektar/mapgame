@@ -8,7 +8,14 @@ export default class MapControls extends Component {
                 className={this.props.visible ? 'visible' : ''}
             >
                 <button className="line"></button>
-                <button className="marker"></button>
+
+                <div className="separator"></div>
+
+                <button
+                    className="marker"
+                    disabled={!this.props.hasLatLngAnswer}
+                >
+                </button>
             </div>
         );
     }

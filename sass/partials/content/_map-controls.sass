@@ -1,17 +1,35 @@
 @import "globals"
 
 #content #map-controls
+    background: #fff
+    border-radius: 2px
     bottom: 24px
-    height: 32px
+    box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.298039)
+    height: 28px
     left: auto
-    right: $sidebar-width
+    right: $sidebar-width + 10px
     top: auto
-    width: 64px
+    width: 55px
 
     button
+        background-color: transparent
         background-size: contain
-        height: 24px
-        width: 24px
+        border: none
+        height: 28px
+        width: 27px
+
+        &[disabled]
+            opacity: .4
+
+        &.line
+            background-image: url("marker.png")
 
         &.marker
             background-image: url("marker.png")
+
+    .separator
+        background-color: #e6e6e6
+        display: inline-block
+        height: 67%
+        margin-bottom: 7%
+        width: 1px
