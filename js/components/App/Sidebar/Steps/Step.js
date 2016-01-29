@@ -6,6 +6,8 @@ export default class Step extends Component {
     render() {
         return (
             <li className={(this.props.visible ? 'visible' : '') + (this.props.current ? ' current' : '')}>
+                <div className="border"></div>
+
                 <span className="step-num">
                     Step {this.props.stepNum}:
                 </span>

@@ -24,11 +24,12 @@
         margin-right: 10px
         opacity: 0
         overflow: hidden
+        position: relative
 
         &.visible
             display: list-item
             height: auto
-            margin-bottom: 10px
+            padding: 10px 0
             opacity: .4
 
             &#win
@@ -40,6 +41,16 @@
         &.current
             opacity: 1
             transition: opacity 800ms ease
+
+            .border
+                display: none
+
+        .border
+            background: linear-gradient(to right, #fff 0%, #888 30%, #888 70%, #fff 100%)
+            bottom: 0
+            height: 1px
+            position: absolute
+            width: 100%
 
         .text
             em
