@@ -8,14 +8,15 @@ export default class Step extends Component {
             <li className={(this.props.visible ? 'visible' : '') + (this.props.current ? ' current' : '')}>
                 <div className="border"></div>
 
-                <span className="step-num">
+                <div className="step-num">
                     Step {this.props.stepNum}:
-                </span>
+                </div>
 
-                <span className="text"
+                <div
+                    className="text"
                     dangerouslySetInnerHTML={{__html: this.props.text}}
                 >
-                </span>
+                </div>
 
                 {
                     this.props.image ?
