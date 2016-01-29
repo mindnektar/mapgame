@@ -49,15 +49,14 @@ class App extends Component {
 
             case 'latLng':
                 const marker = data.map.markers[data.current.step];
-                const tolerance = answer.value.tolerance || .0002;
 
                 if (!marker) {
                     return false;
                 }
 
-                return (
-                    Math.abs(marker.lat - answer.value.lat) <= tolerance &&
-                    Math.abs(marker.lng - answer.value.lng) <= tolerance
+                return google.maps.geometry.poly.containsLocation(
+                    new google.maps.LatLng(marker.lat, marker.lng),
+                    new google.maps.Polygon({paths: answer.value})
                 );
         }
 

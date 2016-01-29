@@ -50,7 +50,7 @@ export default class Map extends Component {
         });
 
         this.map.addListener('click', event => {
-            console.log(event.latLng.lat(), event.latLng.lng());
+            console.log(`{lat: ${event.latLng.lat()}, lng: ${event.latLng.lng()}}`);
 
             if (!this.props.hasLatLngAnswer) {
                 return;
