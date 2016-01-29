@@ -20,7 +20,7 @@ module.exports = {
                 loader: "style!css!resolve-url-loader!sass?sourceMap&indentedSyntax&includePaths[]=sass/helpers"
             },
             {
-                test: /\.png$/,
+                test: /\.(png|jpg)$/,
                 loader: 'url-loader?limit=100000&includePaths[]=img'
             }
         ]
