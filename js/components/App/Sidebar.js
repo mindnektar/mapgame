@@ -5,24 +5,24 @@ import NextStep from './Sidebar/NextStep';
 
 export default class Sidebar extends Component {
     render() {
-        const steps = this.props.levels[this.props.current.level].steps;
+        const steps = this.props.levels[this.props.level].steps;
 
         return (
             <div id="sidebar">
                 <Progress
                     stepCount={steps.length}
-                    currentStep={this.props.current.step}
+                    currentStep={this.props.step}
                     nextStep={this.props.nextStep}
                 />
                 <Steps
                     steps={steps}
-                    currentStep={this.props.current.step}
+                    currentStep={this.props.step}
                     answerValid={this.props.answerValid}
                     nextStep={this.props.nextStep}
                     changeAnswer={this.props.changeAnswer}
                 />
                 {
-                    this.props.current.step < steps.length ?
+                    this.props.step < steps.length ?
                         <NextStep
                             answerValid={this.props.answerValid}
                             nextStep={this.props.nextStep}

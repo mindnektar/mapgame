@@ -8,9 +8,9 @@ import Sidebar from './App/Sidebar';
 
 class App extends Component {
     render() {
-        const {dispatch, current, inventory, map, tab} = this.props;
-
-        const step = levels[current.level].steps[current.step];
+        const {dispatch, answer, inventory, map, step, tab} = this.props;
+        const level = 0;
+        const stepData = levels[level].steps[step];
 
         return (
             <div>
@@ -19,16 +19,17 @@ class App extends Component {
                     markers={map.markers}
                     inventoryItems={inventory.items}
                     inventorySelected={inventory.selected}
-                    step={current.step}
-                    hasLatLngAnswer={step && step.answer && step.answer.type === 'latLng'}
-                    answerValid={step && App.isAnswerValid(step.answer, {current, map})}
+                    step={step}
+                    hasLatLngAnswer={stepData && stepData.answer && stepData.answer.type === 'latLng'}
+                    answerValid={stepData && App.isAnswerValid(stepData.answer, {answer, step, map})}
                     setMarker={(step, lat, lng) => dispatch(actions.setMarker(step, lat, lng))}
                     inventorySelect={index => dispatch(actions.inventorySelect(index))}
                 />
                 <Sidebar
                     levels={levels}
-                    current={current}
-                    answerValid={step && App.isAnswerValid(step.answer, {current, map})}
+                    level={level}
+                    step={step}
+                    answerValid={stepData && App.isAnswerValid(stepData.answer, {answer, step, map})}
                     nextStep={() => dispatch(actions.nextStep())}
                     changeAnswer={answer => dispatch(actions.changeAnswer(answer))}
                 />
@@ -48,10 +49,10 @@ class App extends Component {
 
         switch (answer.type) {
             case 'string':
-                return data.current.answer.toLowerCase() === answer.value.toLowerCase();
+                return data.answer.toLowerCase() === answer.value.toLowerCase();
 
             case 'latLng':
-                const marker = data.map.markers[data.current.step];
+                const marker = data.map.markers[data.step];
 
                 if (!marker) {
                     return false;
@@ -67,13 +68,14 @@ class App extends Component {
     }
 }
 
-const select = state => {
+const mapStateToProps = state => {
     return {
-        current: state.current,
+        answer: state.answer,
         inventory: state.inventory,
         map: state.map,
+        step: state.step,
         tab: state.tab
     };
 };
 
-export default connect(select)(App);
+export default connect(mapStateToProps)(App);
