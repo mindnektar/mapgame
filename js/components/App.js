@@ -16,23 +16,25 @@ class App extends Component {
             <div>
                 <Content
                     currentTab={tab.current}
+                    currentStep={step}
                     markers={map.markers}
                     inventoryItems={inventory.items}
                     inventorySelected={inventory.selected}
-                    step={step}
                     hasLatLngAnswer={stepData && stepData.answer && stepData.answer.type === 'latLng'}
                     answerValid={stepData && App.isAnswerValid(stepData.answer, {answer, step, map})}
                     setMarker={(step, lat, lng) => dispatch(actions.setMarker(step, lat, lng))}
                     inventorySelect={index => dispatch(actions.inventorySelect(index))}
                 />
+
                 <Sidebar
+                    currentStep={step}
                     levels={levels}
                     level={level}
-                    step={step}
                     answerValid={stepData && App.isAnswerValid(stepData.answer, {answer, step, map})}
                     nextStep={() => dispatch(actions.nextStep())}
                     changeAnswer={answer => dispatch(actions.changeAnswer(answer))}
                 />
+
                 <TopBar
                     tabs={tab.items}
                     currentTab={tab.current}

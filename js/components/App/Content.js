@@ -11,7 +11,7 @@ export default class Content extends Component {
                 <Map
                     visible={this.props.currentTab === 'map'}
                     markers={this.props.markers}
-                    step={this.props.step}
+                    currentStep={this.props.currentStep}
                     hasLatLngAnswer={this.props.hasLatLngAnswer}
                     answerValid={this.props.answerValid}
                     setMarker={this.props.setMarker}

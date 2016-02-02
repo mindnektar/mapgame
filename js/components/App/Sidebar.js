@@ -10,17 +10,19 @@ export default class Sidebar extends Component {
         return (
             <div id="sidebar">
                 <Progress
+                    currentStep={this.props.currentStep}
                     stepCount={steps.length}
-                    currentStep={this.props.step}
                     nextStep={this.props.nextStep}
                 />
+
                 <Steps
+                    currentStep={this.props.currentStep}
                     steps={steps}
-                    currentStep={this.props.step}
                     answerValid={this.props.answerValid}
                     nextStep={this.props.nextStep}
                     changeAnswer={this.props.changeAnswer}
                 />
+
                 {
                     this.props.step < steps.length ?
                         <NextStep
