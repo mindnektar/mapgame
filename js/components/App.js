@@ -28,7 +28,7 @@ class App extends Component {
 
                 <Sidebar
                     currentStep={step}
-                    levels={levels}
+                    steps={levels[level].steps}
                     level={level}
                     answerValid={stepData && App.isAnswerValid(stepData.answer, {answer, step, map})}
                     nextStep={() => dispatch(actions.nextStep())}
