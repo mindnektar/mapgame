@@ -1,36 +1,33 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import * as actions from '../actions';
-import levels from '../levels';
 import Content from './App/Content';
 import TopBar from './App/TopBar';
 import Sidebar from './App/Sidebar';
 
 class App extends Component {
     render() {
-        const {dispatch, answer, inventory, map, step, tab} = this.props;
-        const level = 0;
-        const stepData = levels[level].steps[step];
+        const {dispatch, answer, inventory, map, steps, tab} = this.props;
+        const stepItem = steps.items[steps.current];
 
         return (
             <div>
                 <Content
                     currentTab={tab.current}
-                    currentStep={step}
+                    currentStep={steps.current}
                     markers={map.markers}
                     inventoryItems={inventory.items}
                     inventorySelected={inventory.selected}
-                    hasLatLngAnswer={stepData && stepData.answer && stepData.answer.type === 'latLng'}
-                    answerValid={stepData && App.isAnswerValid(stepData.answer, {answer, step, map})}
+                    hasLatLngAnswer={stepItem && stepItem.answer && stepItem.answer.type === 'latLng'}
+                    answerValid={stepItem && App.isAnswerValid(stepItem.answer, {answer, step: steps.current, map})}
                     setMarker={(step, lat, lng) => dispatch(actions.setMarker(step, lat, lng))}
                     inventorySelect={index => dispatch(actions.inventorySelect(index))}
                 />
 
                 <Sidebar
-                    currentStep={step}
-                    steps={levels[level].steps}
-                    level={level}
-                    answerValid={stepData && App.isAnswerValid(stepData.answer, {answer, step, map})}
+                    currentStep={steps.current}
+                    steps={steps.items}
+                    answerValid={stepItem && App.isAnswerValid(stepItem.answer, {answer, step: steps.current, map})}
                     nextStep={() => dispatch(actions.nextStep())}
                     changeAnswer={answer => dispatch(actions.changeAnswer(answer))}
                 />
@@ -75,7 +72,7 @@ const mapStateToProps = state => {
         answer: state.answer,
         inventory: state.inventory,
         map: state.map,
-        step: state.step,
+        steps: state.steps,
         tab: state.tab
     };
 };

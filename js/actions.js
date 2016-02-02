@@ -17,3 +17,7 @@ export function nextStep() {
 export function setMarker(step, lat, lng) {
     return {type: 'SET_MARKER', step, lat, lng};
 }
+
+export function setSteps(steps) {
+    return {type: 'SET_STEPS', steps};
+}
