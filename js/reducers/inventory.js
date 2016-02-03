@@ -8,10 +8,12 @@ const initialState = {
     ]
 };
 
-export default (state = initialState, action = '') => {
-    switch (action.type) {
+export default (state = initialState, action = {}) => {
+    const {type, payload} = action;
+
+    switch (type) {
         case 'INVENTORY_SELECT':
-            return Object.assign({}, state, {selected: action.index});
+            return Object.assign({}, state, {selected: payload.index});
 
         default:
             return state;

@@ -3,14 +3,16 @@ const initialState = {
     current: 0
 };
 
-export default (state = initialState, action = '') => {
-    switch (action.type) {
+export default (state = initialState, action = {}) => {
+    const {type, payload} = action;
+
+    switch (type) {
         case 'NEXT_STEP':
             return Object.assign({}, state, {current: state.current + 1});
 
         case 'SET_STEPS':
             return {
-                items: action.steps,
+                items: payload.steps,
                 current: 0
             };
 
