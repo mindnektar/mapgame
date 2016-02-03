@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux';
 import * as actions from '../actions';
 import Content from './App/Content';
 import TopBar from './App/TopBar';
@@ -7,7 +8,7 @@ import Sidebar from './App/Sidebar';
 
 class App extends Component {
     render() {
-        const {dispatch, answer, inventory, map, steps, tab} = this.props;
+        const {answer, inventory, map, steps, tab} = this.props;
         const stepItem = steps.items[steps.current];
 
         return (
@@ -20,22 +21,22 @@ class App extends Component {
                     inventorySelected={inventory.selected}
                     hasLatLngAnswer={stepItem && stepItem.answer && stepItem.answer.type === 'latLng'}
                     answerValid={stepItem && App.isAnswerValid(stepItem.answer, {answer, step: steps.current, map})}
-                    setMarker={(step, lat, lng) => dispatch(actions.setMarker(step, lat, lng))}
-                    inventorySelect={index => dispatch(actions.inventorySelect(index))}
+                    setMarker={this.props.setMarker}
+                    inventorySelect={this.props.inventorySelect}
                 />
 
                 <Sidebar
                     currentStep={steps.current}
                     steps={steps.items}
                     answerValid={stepItem && App.isAnswerValid(stepItem.answer, {answer, step: steps.current, map})}
-                    nextStep={() => dispatch(actions.nextStep())}
-                    changeAnswer={answer => dispatch(actions.changeAnswer(answer))}
+                    nextStep={this.props.nextStep}
+                    changeAnswer={this.props.changeAnswer}
                 />
 
                 <TopBar
                     tabs={tab.items}
                     currentTab={tab.current}
-                    changeTab={tab => dispatch(actions.changeTab(tab))}
+                    changeTab={this.props.changeTab}
                 />
             </div>
         );
@@ -77,4 +78,12 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = dispatch => bindActionCreators({
+    setMarker: actions.setMarker,
+    inventorySelect: actions.inventorySelect,
+    nextStep: actions.nextStep,
+    changeAnswer: actions.changeAnswer,
+    changeTab: actions.changeTab
+}, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
