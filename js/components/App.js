@@ -20,7 +20,7 @@ class App extends Component {
                     inventoryItems={inventory.items}
                     inventorySelected={inventory.selected}
                     hasLatLngAnswer={stepItem && stepItem.answer && stepItem.answer.type === 'latLng'}
-                    answerValid={stepItem && App.isAnswerValid(stepItem.answer, {answer, step: steps.current, map})}
+                    answerValid={answer.valid}
                     setMarker={this.props.setMarker}
                     inventorySelect={this.props.inventorySelect}
                 />
@@ -28,7 +28,7 @@ class App extends Component {
                 <Sidebar
                     currentStep={steps.current}
                     steps={steps.items}
-                    answerValid={stepItem && App.isAnswerValid(stepItem.answer, {answer, step: steps.current, map})}
+                    answerValid={answer.valid}
                     nextStep={this.props.nextStep}
                     changeAnswer={this.props.changeAnswer}
                 />
@@ -40,31 +40,6 @@ class App extends Component {
                 />
             </div>
         );
-    }
-
-    static isAnswerValid(answer, data) {
-        if (!answer) {
-            return true;
-        }
-
-        switch (answer.type) {
-            case 'string':
-                return data.answer.toLowerCase() === answer.value.toLowerCase();
-
-            case 'latLng':
-                const marker = data.map.markers[data.step];
-
-                if (!marker) {
-                    return false;
-                }
-
-                return google.maps.geometry.poly.containsLocation(
-                    new google.maps.LatLng(marker.lat, marker.lng),
-                    new google.maps.Polygon({paths: answer.value})
-                );
-        }
-
-        return false;
     }
 }
 

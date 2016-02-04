@@ -1,5 +1,12 @@
 export function changeAnswer(answer) {
-    return {type: 'CHANGE_ANSWER', payload: {answer}};
+    return (dispatch, getState) => {
+        dispatch({type: 'CHANGE_ANSWER', payload: {answer}});
+
+        const {steps} = getState();
+        const valid = answer === steps.items[steps.current].answer.value;
+
+        dispatch({type: 'SET_VALIDITY', payload: {valid}});
+    };
 }
 
 export function changeTab(tab) {
@@ -11,11 +18,29 @@ export function inventorySelect(index) {
 }
 
 export function nextStep() {
-    return {type: 'NEXT_STEP'};
+    return (dispatch, getState) => {
+        dispatch({type: 'NEXT_STEP'});
+        dispatch({type: 'CHANGE_ANSWER', payload: {answer: ''}});
+
+        const {steps} = getState();
+        const valid = !steps.items[steps.current].answer;
+
+        dispatch({type: 'SET_VALIDITY', payload: {valid}});
+    };
 }
 
 export function setMarker(step, lat, lng) {
-    return {type: 'SET_MARKER', payload: {step, lat, lng}};
+    return (dispatch, getState) => {
+        dispatch({type: 'SET_MARKER', payload: {step, lat, lng}});
+
+        const {steps} = getState();
+        const valid = google.maps.geometry.poly.containsLocation(
+            new google.maps.LatLng(lat, lng),
+            new google.maps.Polygon({paths: steps.items[steps.current].answer.value})
+        );
+
+        dispatch({type: 'SET_VALIDITY', payload: {valid}});
+    };
 }
 
 export function setSteps(steps) {
