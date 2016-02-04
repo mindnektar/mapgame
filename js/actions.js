@@ -5,7 +5,7 @@ export function changeAnswer(answer) {
         const {steps} = getState();
         const valid = answer === steps.items[steps.current].answer.value;
 
-        dispatch({type: 'SET_VALIDITY', payload: {valid}});
+        dispatch(setValidity(valid));
     };
 }
 
@@ -25,7 +25,7 @@ export function nextStep() {
         const {steps} = getState();
         const valid = !steps.items[steps.current].answer;
 
-        dispatch({type: 'SET_VALIDITY', payload: {valid}});
+        dispatch(setValidity(valid));
     };
 }
 
@@ -39,10 +39,20 @@ export function setMarker(step, lat, lng) {
             new google.maps.Polygon({paths: steps.items[steps.current].answer.value})
         );
 
-        dispatch({type: 'SET_VALIDITY', payload: {valid}});
+        dispatch(setValidity(valid));
     };
 }
 
 export function setSteps(steps) {
-    return {type: 'SET_STEPS', payload: {steps}};
+    return (dispatch, getState) => {
+        dispatch({type: 'SET_STEPS', payload: {steps}});
+
+        const valid = !getState().steps.items[0].answer;
+
+        dispatch(setValidity(valid));
+    };
+}
+
+export function setValidity(valid) {
+    return {type: 'SET_VALIDITY', payload: {valid}};
 }
