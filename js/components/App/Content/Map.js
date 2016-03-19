@@ -11,7 +11,7 @@ export default class Map extends Component {
         this.markers = [];
 
         this.props.markers.forEach((marker, key) => {
-            const icon = this.props.answerValid || key < this.props.step ? 'img/marker_correct.png' : 'img/marker.png';
+            const icon = this.props.answerValid || key < this.props.currentStep ? 'img/marker_correct.png' : 'img/marker.png';
 
             this.markers.push(
                 new google.maps.Marker({
@@ -57,7 +57,7 @@ export default class Map extends Component {
             }
 
             this.props.setMarker(
-                this.props.step,
+                this.props.currentStep,
                 event.latLng.lat(),
                 event.latLng.lng()
             );

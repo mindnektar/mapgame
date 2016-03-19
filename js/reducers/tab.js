@@ -16,10 +16,12 @@ const initialState = {
     current: 'map'
 };
 
-export default (state = initialState, action = '') => {
-    switch (action.type) {
+export default (state = initialState, action = {}) => {
+    const {type, payload} = action;
+
+    switch (type) {
         case 'CHANGE_TAB':
-            return Object.assign({}, state, {current: action.tab});
+            return Object.assign({}, state, {current: payload.tab});
 
         default:
             return state;
