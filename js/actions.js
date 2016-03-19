@@ -1,9 +1,13 @@
+export function addItems(items) {
+    return {type: 'ADD_ITEMS', payload: {items}};
+}
+
 export function changeAnswer(answer) {
     return (dispatch, getState) => {
         dispatch({type: 'CHANGE_ANSWER', payload: {answer}});
 
         const {steps} = getState();
-        const valid = answer === steps.items[steps.current].answer.value;
+        const valid = answer.toLowerCase() === steps.items[steps.current].answer.value;
 
         dispatch(setValidity(valid));
     };
@@ -13,8 +17,14 @@ export function changeTab(tab) {
     return {type: 'CHANGE_TAB', payload: {tab}};
 }
 
-export function inventorySelect(index) {
-    return {type: 'INVENTORY_SELECT', payload: {index}};
+export function inventorySelect(index, triggerNextStep) {
+    return dispatch => {
+        dispatch({type: 'INVENTORY_SELECT', payload: {index, triggersNextStep: false}});
+
+        if (triggerNextStep) {
+            dispatch(nextStep());
+        }
+    };
 }
 
 export function nextStep() {
@@ -23,9 +33,17 @@ export function nextStep() {
         dispatch({type: 'CHANGE_ANSWER', payload: {answer: ''}});
 
         const {steps} = getState();
-        const valid = !steps.items[steps.current].answer;
+        const valid = steps.items[steps.current] ? !steps.items[steps.current].answer : false;
 
         dispatch(setValidity(valid));
+
+        if (steps.items[steps.current] && steps.items[steps.current].items) {
+            dispatch(addItems(steps.items[steps.current].items));
+        }
+
+        if (steps.items[steps.current] && steps.items[steps.current].polylines) {
+            steps.items[steps.current].polylines.forEach(polyline => dispatch(setPolyline(polyline)));
+        }
     };
 }
 
@@ -43,6 +61,10 @@ export function setMarker(step, lat, lng) {
     };
 }
 
+export function setPolyline(polyline) {
+    return {type: 'SET_POLYLINE', payload: {polyline}};
+}
+
 export function setSteps(steps) {
     return (dispatch, getState) => {
         dispatch({type: 'SET_STEPS', payload: {steps}});
@@ -55,4 +77,8 @@ export function setSteps(steps) {
 
 export function setValidity(valid) {
     return {type: 'SET_VALIDITY', payload: {valid}};
+}
+
+export function start() {
+    return {type: 'START'};
 }

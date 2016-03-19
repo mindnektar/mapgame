@@ -13,26 +13,51 @@
         top: 0
         transition: opacity 300ms ease
         width: 100%
+        z-index: 1
 
         &.visible
             opacity: 1
             pointer-events: all
+
+        div
+            height: 100%
+            position: relative
+
+            span
+                font-family: 'Indie Flower', cursive
+                font-size: 38px
+                left: 50%
+                position: absolute
+                top: 50%
+                transform: rotate(28deg) translateX(-50%)
 
     .item
         background: #fff
         border: 4px ridge #ddd
         border-radius: 6px
         cursor: pointer
+        float: left
         height: 150px
         margin: 16px 0 0 16px
+        position: relative
         transition: border-color 300ms ease
         width: 150px
 
         &:hover
             border-color: $color-correct
 
+        span
+            font-family: 'Indie Flower', cursive
+            font-size: 7px
+            left: 50%
+            position: absolute
+            top: 50%
+            transform: rotate(28deg) translateX(-50%)
+
     img
-        display: block
-        margin: 0 auto
         max-height: 100%
         max-width: 100%
+        position: absolute
+        top: 50%
+        transform: translate(-50%, -50%)
+        left: 50%

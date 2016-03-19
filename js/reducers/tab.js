@@ -2,16 +2,16 @@ const initialState = {
     items: [
         {
             id: 'map',
-            label: 'Map'
+            label: 'Karte'
         },
         {
             id: 'inventory',
-            label: 'Inventory'
-        },
-        {
+            label: 'Inventar'
+        }
+        /*{
             id: 'notes',
             label: 'Notes'
-        }
+        }*/
     ],
     current: 'map'
 };

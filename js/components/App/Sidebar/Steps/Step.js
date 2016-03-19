@@ -9,7 +9,7 @@ export default class Step extends Component {
                 <div className="border"></div>
 
                 <div className="step-num">
-                    Step {this.props.stepNum}:
+                    Schritt {this.props.stepNum}:
                 </div>
 
                 <div

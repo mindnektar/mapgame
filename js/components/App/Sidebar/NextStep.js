@@ -8,7 +8,7 @@ export default class NextStep extends Component {
                     onClick={() => this.props.nextStep()}
                     disabled={!this.props.answerValid ? 'disabled' : ''}
                 >
-                    Next step
+                    Nächster Schritt
                 </button>
             </div>
         );

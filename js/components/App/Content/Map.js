@@ -11,7 +11,25 @@ export default class Map extends Component {
         this.markers = [];
 
         this.props.markers.forEach((marker, key) => {
-            const icon = this.props.answerValid || key < this.props.currentStep ? 'img/marker_correct.png' : 'img/marker.png';
+            let icon;
+
+            if (this.props.answerValid) {
+                if (this.props.steps[key].important) {
+                    icon = 'img/marker_important.png';
+                } else {
+                    icon = 'img/marker_correct.png';
+                }
+            } else {
+                if (key < this.props.currentStep) {
+                    if (this.props.steps[key].important) {
+                        icon = 'img/marker_important.png';
+                    } else {
+                        icon = 'img/marker_correct.png';
+                    }
+                } else {
+                    icon = 'img/marker.png';
+                }
+            }
 
             this.markers.push(
                 new google.maps.Marker({
@@ -21,6 +39,26 @@ export default class Map extends Component {
                         marker.lat,
                         marker.lng
                     )
+                })
+            );
+        });
+
+        if (this.polylines) {
+            this.polylines.forEach(polyline => {
+                polyline.setMap(null);
+            });
+        }
+
+        this.polylines = [];
+
+        this.props.polylines.forEach(polyline => {
+            this.polylines.push(
+                new google.maps.Polyline({
+                    map: this.map,
+                    clickable: false,
+                    path: polyline,
+                    strokeColor: '#f00',
+                    strokeWeight: 3
                 })
             );
         });

@@ -5,6 +5,7 @@ import * as actions from '../actions';
 import Content from './App/Content';
 import TopBar from './App/TopBar';
 import Sidebar from './App/Sidebar';
+import Intro from './App/Intro';
 
 class App extends Component {
     render() {
@@ -12,11 +13,17 @@ class App extends Component {
         const stepItem = steps.items[steps.current];
 
         return (
-            <div>
+            <div className={steps.started ? 'started' : ''}>
+                <Intro
+                    start={this.props.start}
+                />
+
                 <Content
+                    steps={steps.items}
                     currentTab={tab.current}
                     currentStep={steps.current}
                     markers={map.markers}
+                    polylines={map.polylines}
                     inventoryItems={inventory.items}
                     inventorySelected={inventory.selected}
                     hasLatLngAnswer={stepItem && stepItem.answer && stepItem.answer.type === 'latLng'}
@@ -58,7 +65,8 @@ const mapDispatchToProps = dispatch => bindActionCreators({
     inventorySelect: actions.inventorySelect,
     nextStep: actions.nextStep,
     changeAnswer: actions.changeAnswer,
-    changeTab: actions.changeTab
+    changeTab: actions.changeTab,
+    start: actions.start
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

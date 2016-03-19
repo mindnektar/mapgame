@@ -9,8 +9,10 @@ export default class Content extends Component {
         return (
             <div id="content">
                 <Map
+                    steps={this.props.steps}
                     visible={this.props.currentTab === 'map'}
                     markers={this.props.markers}
+                    polylines={this.props.polylines}
                     currentStep={this.props.currentStep}
                     hasLatLngAnswer={this.props.hasLatLngAnswer}
                     answerValid={this.props.answerValid}
@@ -18,7 +20,7 @@ export default class Content extends Component {
                 />
 
                 <MapControls
-                    visible={this.props.currentTab === 'map'}
+                    visible={false}
                     hasLatLngAnswer={this.props.hasLatLngAnswer}
                 />
 
@@ -30,7 +32,7 @@ export default class Content extends Component {
                 />
 
                 <Notes
-                    visible={this.props.currentTab === 'notes'}
+                    visible={false}
                 />
             </div>
         );

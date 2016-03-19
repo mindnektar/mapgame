@@ -1,6 +1,7 @@
 const initialState = {
     items: [],
-    current: 0
+    current: 0,
+    started: false
 };
 
 export default (state = initialState, action = {}) => {
@@ -15,6 +16,9 @@ export default (state = initialState, action = {}) => {
                 items: payload.steps,
                 current: 0
             };
+
+        case 'START':
+            return Object.assign({}, state, {started: true});
 
         default:
             return state;

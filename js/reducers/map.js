@@ -1,5 +1,6 @@
 const initialState = {
-    markers: []
+    markers: [],
+    polylines: []
 };
 
 export default (state = initialState, action = {}) => {
@@ -7,7 +8,7 @@ export default (state = initialState, action = {}) => {
 
     switch (type) {
         case 'SET_MARKER':
-            var markers = state.markers.slice();
+            const markers = state.markers.slice();
 
             markers[payload.step] = {
                 lat: payload.lat,
@@ -15,6 +16,12 @@ export default (state = initialState, action = {}) => {
             };
 
             return Object.assign({}, state, {markers});
+
+        case 'SET_POLYLINE':
+            return Object.assign({}, state, {polylines: [
+                ...state.polylines,
+                payload.polyline
+            ]});
 
         default:
             return state;
