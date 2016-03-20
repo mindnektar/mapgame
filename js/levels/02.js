@@ -165,8 +165,7 @@ export default {
                     {lat: 53.5502172373236, lng: 9.97020274400711},
                     {lat: 53.550454675412404, lng: 9.970173239707947}
                 ]
-            },
-            important: true
+            }
         },
         {
             text: "Mache einen Abstecher auf die Reeperbahn und folge ihr bis zu dem Ort, wo du kürzlich die Schwestern der Gnade so großartig fandst!",
