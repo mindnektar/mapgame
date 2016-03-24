@@ -18,7 +18,7 @@ export default class Steps extends Component {
                         visible={key <= this.props.currentStep}
                         image={step.image}
                         hasStringAnswer={step.answer && step.answer.type === 'string'}
-                        answerValid={this.props.answerValid}
+                        answerValid={this.props.answerValid || key < this.props.currentStep}
                         nextStep={this.props.nextStep}
                         changeAnswer={this.props.changeAnswer}
                     />

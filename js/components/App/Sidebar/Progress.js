@@ -5,7 +5,7 @@ export default class App extends Component {
         return (
             <div
                 id="progress"
-                /*onClick={() => this.props.nextStep()}*/
+                //onClick={() => this.props.nextStep()}
             >
                 <div id="progress-bar">
                     <div style={{width: this.getWidth()}}></div>
